@@ -5,7 +5,7 @@ header-from: "docs/HEADER.md"
 content: |-
   {{ .Header }}
 
-  ## Example
+  ## Usage
 
   ```hcl
   {{ include "examples/simple/main.tf" }}

@@ -1,0 +1,11 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+## 1.0.0 (2024-01-21)
+
+
+### Features
+
+* add initial network module ([942240d](https://github.com/cawcaw253/terraform-aws-network/commit/942240d73b530f055621f4185960ea76f574b1ce))
+* update readme and add release action ([a80f997](https://github.com/cawcaw253/terraform-aws-network/commit/a80f997b1296f6b0bf022a85351bd060a5aa57e9))

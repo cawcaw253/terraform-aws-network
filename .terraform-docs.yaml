@@ -1,0 +1,27 @@
+formatter: "markdown table"
+
+header-from: "docs/HEADER.md"
+
+content: |-
+  {{ .Header }}
+
+  ## Example
+
+  ```hcl
+  {{ include "examples/simple/main.tf" }}
+  ```
+
+  {{ .Requirements }}
+
+  {{ .Providers }}
+
+  {{ .Modules }}
+
+  {{ .Resources }}
+
+  {{ .Inputs }}
+
+  {{ .Outputs }}
+
+output:
+  mode: inject

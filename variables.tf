@@ -1,0 +1,106 @@
+################################################################################
+# Default
+################################################################################
+variable "default_tags" {
+  description = "Default tags"
+  type        = map(string)
+  default     = {}
+}
+
+################################################################################
+# Project and Environment details
+################################################################################
+variable "project_name" {
+  description = "Name of project"
+  type        = string
+}
+
+variable "environment_name" {
+  description = "Name of environment"
+  type        = string
+  default     = "dev"
+}
+
+variable "region_name" {
+  description = "name of aws region. if not set value, it automatically set providers current region."
+  type        = string
+  default     = null
+}
+
+variable "availability_zones" {
+  description = "list of availability zones which use"
+  type        = list(string)
+  default     = ["a", "b"]
+}
+
+################################################################################
+# VPC
+################################################################################
+variable "vpc_cidr" {
+  description = "CIDR Block for the VPC"
+  type        = string
+
+  validation {
+    condition     = can(cidrnetmask(var.vpc_cidr))
+    error_message = "Must be a valid IP range in x.x.x.x/x notation"
+  }
+}
+
+################################################################################
+# NAT
+################################################################################
+variable "without_nat" {
+  description = "Boolean value for using nat gateway or not"
+  type        = bool
+  default     = false
+}
+
+variable "create_nat_per_az" {
+  description = "Boolean value for create nat gateway per availability zones. If value is true, create nat gateway per azs, if false create only 1 nat gateway and share it"
+  type        = bool
+  default     = true
+}
+
+variable "nat_deploy_module" {
+  description = "The name of the module in which to deploy the NAT gateway. Module is key value of public_subnets variable."
+  type        = string
+  default     = null
+}
+
+##################
+# Public Subnets #
+##################
+variable "public_subnets" {
+  description = "Configurations of public subnet"
+  type        = map(list(string))
+
+  # validation {
+  #   condition     = alltrue([for k, v in var.subnets : can(cidrnetmask(v.cidr))])
+  #   error_message = "Must be a valid IP range in x.x.x.x/x notation"
+  # }
+}
+
+variable "public_subnets_tag" {
+  description = "Setting tag to specific public subnet"
+  type        = map(map(string))
+  default     = {}
+}
+
+###################
+# Private Subnets #
+###################
+variable "private_subnets" {
+  description = "Configurations of private subnet"
+  type        = map(list(string))
+
+  # validation {
+  #   condition     = alltrue([for k, v in var.subnets : can(cidrnetmask(v.cidr))])
+  #   error_message = "Must be a valid IP range in x.x.x.x/x notation"
+  # }
+}
+
+variable "private_subnets_tag" {
+  description = "Setting tag to specific private subnet"
+  type        = map(map(string))
+  default     = {}
+}

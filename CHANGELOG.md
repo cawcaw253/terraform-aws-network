@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0](https://github.com/cawcaw253/terraform-aws-network/compare/v1.0.0...v1.1.0) (2024-01-24)
+
+
+### Features
+
+* upgrade module required version ([30b91ed](https://github.com/cawcaw253/terraform-aws-network/commit/30b91ed776c5ef0447d1cac69a638b34ad5f9ace))
+
 ## 1.0.0 (2024-01-21)
 
 

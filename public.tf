@@ -5,7 +5,7 @@ resource "aws_subnet" "public_subnet" {
   for_each = local.public_subnet_map
 
   vpc_id                  = aws_vpc.this.id
-  map_public_ip_on_launch = false
+  map_public_ip_on_launch = var.public_subnets_map_ip_on_launch
 
   cidr_block        = try(each.value["cidr"], null)
   availability_zone = element(module.region.availability_zone_names, each.value.index)

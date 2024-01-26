@@ -86,6 +86,12 @@ variable "public_subnets_tag" {
   default     = {}
 }
 
+variable "public_subnets_map_ip_on_launch" {
+  description = "Enable map_public_ip_on_launch on public subnet"
+  type        = bool
+  default     = false
+}
+
 ###################
 # Private Subnets #
 ###################

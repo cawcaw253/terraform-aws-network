@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0](https://github.com/cawcaw253/terraform-aws-network/compare/v1.1.0...v1.2.0) (2024-01-26)
+
+
+### Features
+
+* add public_subnets_map_ip_on_launch feature for public subnet ([6c78ec8](https://github.com/cawcaw253/terraform-aws-network/commit/6c78ec82d87916bc2b2f8402d5d83d89c0393837))
+
 ## [1.1.0](https://github.com/cawcaw253/terraform-aws-network/compare/v1.0.0...v1.1.0) (2024-01-24)
 
 

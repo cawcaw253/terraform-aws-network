@@ -74,10 +74,12 @@ variable "public_subnets" {
   description = "Configurations of public subnet"
   type        = map(list(string))
 
-  # validation {
-  #   condition     = alltrue([for k, v in var.subnets : can(cidrnetmask(v.cidr))])
-  #   error_message = "Must be a valid IP range in x.x.x.x/x notation"
-  # }
+  validation {
+    condition = alltrue(concat([for key, cidr_list in var.public_subnets : [
+      for cidr in cidr_list : can(cidrnetmask(cidr))
+    ]]...))
+    error_message = "Must be a valid IP range in x.x.x.x/x notation"
+  }
 }
 
 variable "public_subnets_tag" {
@@ -99,10 +101,12 @@ variable "private_subnets" {
   description = "Configurations of private subnet"
   type        = map(list(string))
 
-  # validation {
-  #   condition     = alltrue([for k, v in var.subnets : can(cidrnetmask(v.cidr))])
-  #   error_message = "Must be a valid IP range in x.x.x.x/x notation"
-  # }
+  validation {
+    condition = alltrue(concat([for key, cidr_list in var.private_subnets : [
+      for cidr in cidr_list : can(cidrnetmask(cidr))
+    ]]...))
+    error_message = "Must be a valid IP range in x.x.x.x/x notation"
+  }
 }
 
 variable "private_subnets_tag" {

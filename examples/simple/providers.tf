@@ -16,7 +16,7 @@ provider "aws" {
   default_tags {
     tags = {
       "terraform" = "yes",
-      "purpose" = "example",
+      "purpose"   = "example",
     }
   }
 }

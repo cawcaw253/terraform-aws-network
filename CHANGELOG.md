@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0](https://github.com/cawcaw253/terraform-aws-network/compare/v1.2.0...v1.3.0) (2024-09-25)
+
+
+### Features
+
+* add cidr valiadtion ([0e15215](https://github.com/cawcaw253/terraform-aws-network/commit/0e152150bf90952319976d7b12aed4e4c0395a2c))
+
 ## [1.2.0](https://github.com/cawcaw253/terraform-aws-network/compare/v1.1.0...v1.2.0) (2024-01-26)
 
 

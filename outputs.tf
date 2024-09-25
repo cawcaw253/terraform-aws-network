@@ -1,6 +1,6 @@
-################################################################################
-# VPC
-################################################################################
+#######
+# VPC #
+#######
 output "vpc_id" {
   description = "ID of the VPC"
   value       = aws_vpc.this.id
@@ -16,33 +16,33 @@ output "vpc_cidr_block" {
   value       = aws_vpc.this.cidr_block
 }
 
-################################################################################
-# Internet Gateway
-################################################################################
+####################
+# Internet Gateway #
+####################
 output "igw_id" {
   description = "The ID of the Internet Gateway"
   value       = aws_internet_gateway.this.id
 }
 
-################################################################################
-# NAT Gateway
-################################################################################
+###############
+# NAT Gateway #
+###############
 output "nat_gateway_ids" {
   description = "IDs of the NAT Gateways created"
   value       = aws_nat_gateway.this.*.id
 }
 
-################################################################################
-# Availability Zones
-################################################################################
+######################
+# Availability Zones #
+######################
 output "availability_zones" {
   description = "List of Availability Zones where subnets were created"
   value       = module.region.availability_zone_names
 }
 
-################################################################################
-# Public Subnets
-################################################################################
+##################
+# Public Subnets #
+##################
 output "public_subnet_ids" {
   description = "ID list of public subnets"
   value = {
@@ -70,9 +70,9 @@ output "public_route_table_ids" {
   }
 }
 
-################################################################################
-# Private Subnets
-################################################################################
+###################
+# Private Subnets #
+###################
 output "private_subnet_ids" {
   description = "ID list of private subnets"
   value = {

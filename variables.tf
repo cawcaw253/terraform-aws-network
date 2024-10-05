@@ -72,45 +72,44 @@ variable "nat_deploy_module" {
 ##################
 variable "public_subnets" {
   description = "Configurations of public subnet"
-  type        = map(list(string))
+  type        = list(object({
+    name = string
+    cidr_list = list(string)
+    tag = optional(map(any))
+    map_public_ip_on_launch = optional(bool)
+  }))
 
-  validation {
-    condition = alltrue(concat([for key, cidr_list in var.public_subnets : [
-      for cidr in cidr_list : can(cidrnetmask(cidr))
-    ]]...))
-    error_message = "Must be a valid IP range in x.x.x.x/x notation"
-  }
+  # validation {
+  #   condition = alltrue(concat([for key, cidr_list in var.public_subnets : [
+  #     for cidr in cidr_list : can(cidrnetmask(cidr))
+  #   ]]...))
+  #   error_message = "Must be a valid IP range in x.x.x.x/x notation"
+  # }
 }
 
-variable "public_subnets_tag" {
-  description = "Setting tag to specific public subnet"
-  type        = map(map(string))
-  default     = {}
-}
-
-variable "public_subnets_map_ip_on_launch" {
-  description = "Enable map_public_ip_on_launch on public subnet"
-  type        = bool
-  default     = false
-}
+# variable "public_subnets_map_ip_on_launch" {
+#   description = "Enable map_public_ip_on_launch on public subnet"
+#   type        = bool
+#   default     = false
+# }
 
 ###################
 # Private Subnets #
 ###################
-variable "private_subnets" {
-  description = "Configurations of private subnet"
-  type        = map(list(string))
+# variable "private_subnets" {
+#   description = "Configurations of private subnet"
+#   type        = map(list(string))
 
-  validation {
-    condition = alltrue(concat([for key, cidr_list in var.private_subnets : [
-      for cidr in cidr_list : can(cidrnetmask(cidr))
-    ]]...))
-    error_message = "Must be a valid IP range in x.x.x.x/x notation"
-  }
-}
+#   validation {
+#     condition = alltrue(concat([for key, cidr_list in var.private_subnets : [
+#       for cidr in cidr_list : can(cidrnetmask(cidr))
+#     ]]...))
+#     error_message = "Must be a valid IP range in x.x.x.x/x notation"
+#   }
+# }
 
-variable "private_subnets_tag" {
-  description = "Setting tag to specific private subnet"
-  type        = map(map(string))
-  default     = {}
-}
+# variable "private_subnets_tag" {
+#   description = "Setting tag to specific private subnet"
+#   type        = map(map(string))
+#   default     = {}
+# }
